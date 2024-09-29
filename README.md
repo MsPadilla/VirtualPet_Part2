@@ -52,6 +52,45 @@ Nico <br>
 Giselle <br>
 
 
+### How does the Arduino (Adafruit Circuit Playground) Code work? Since you may be wondering..
+
+This program utilizes an Arduino light sensor (or any other analog sensor connected to analog pin 5) and visualizes the sensor data using a Processing sketch.
+
+###Breakdown of the Program:
+1. Libraries and Variables:
+
+import processing.serial.*; and import cc.arduino.*; are the libraries that allow communication between Processing and Arduino.
+Arduino arduino; declares a variable for the Arduino object, which facilitates communication between Processing and the Arduino board.
+
+2. ```setup()``` Function:
+
+The ```size(500, 500);``` function sets the window size to 500x500 pixels.
+```arduino = new Arduino(this, Arduino.list()[0], 57600);``` connects to the first available Arduino device.
+```Arduino.list()[0]``` retrieves the first connected Arduino from the list of serial ports.
+The baud rate is set to 57600 (which should match the baud rate used in the Arduino sketch).
+If there are multiple devices connected, you might need to change the [0] to a higher index ([1], [2], etc.) to select the correct port.
+
+3. ```draw()``` Function:
+
+```background(192);``` sets the background color to a gray shade (RGB 192).
+int y = arduino.analogRead(5); reads the value from analog pin A5 on the Arduino board. The value read is between 0 and 1023, depending on the light intensity or other sensor input.
+```System.out.println(y);``` prints the sensor reading (i.e., the analog value) to the console, so you can observe the sensor’s behavior in real-time.
+```ellipse(250, 2*y, 50, 50);``` draws a circle (ellipse) in the window.
+The x-coordinate of the circle is fixed at 250 (center of the window horizontally).
+The y-coordinate is determined by the sensor reading, scaled by 2 (2*y), which moves the circle up or down depending on the input from the sensor.
+The ellipse has a fixed size of 50x50 pixels.
+
+### Key Functionality:
+The program reads analog data from a light sensor (or any other sensor) connected to analog pin A5.
+The value from the sensor controls the vertical position of a circle on the Processing window.
+The more light (or the higher the sensor value), the lower the circle will be positioned (since higher values of y push the circle downward).
+
+###Visualization:
+When the light intensity increases, the circle moves downward.
+When the light intensity decreases, the circle moves upward.
+This creates a simple real-time visual representation of the sensor's data based on the Arduino's analog input.
+
+
 
 
 
