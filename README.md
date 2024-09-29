@@ -56,7 +56,7 @@ Giselle <br>
 
 This program utilizes an Arduino light sensor (or any other analog sensor connected to analog pin 5) and visualizes the sensor data using a Processing sketch.
 
-###Breakdown of the Program:
+### Breakdown of the Program:
 1. Libraries and Variables:
 
 import processing.serial.*; and import cc.arduino.*; are the libraries that allow communication between Processing and Arduino.
@@ -85,7 +85,7 @@ The program reads analog data from a light sensor (or any other sensor) connecte
 The value from the sensor controls the vertical position of a circle on the Processing window.
 The more light (or the higher the sensor value), the lower the circle will be positioned (since higher values of y push the circle downward).
 
-###Visualization:
+### Visualization:
 When the light intensity increases, the circle moves downward.
 When the light intensity decreases, the circle moves upward.
 This creates a simple real-time visual representation of the sensor's data based on the Arduino's analog input.
